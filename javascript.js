@@ -25,9 +25,14 @@ function pow(a, b) {
     return Math.pow(a,b);
 }
 
+const buttons = document.querySelectorAll('#button');
+const display = document.querySelector('.text');
+const oper = document.querySelector('.oper');
+
 let currNum;
 let nextNum;
 let op;
+let value = '';
 
 function operator(curr, next, op) {
     if (isNaN(curr) || isNaN(next)) {
@@ -58,11 +63,9 @@ function clear() {
     value ='';
 }
 
-function remove() {
-    if (currNum !== undefined) {
-        currNum = currNum.toString().slice(0, -1);
-        update();
-    }
+function removeLastChar() {
+    value = value.slice(0, -1);
+    display.textContent = value;
 }
 
 function update() {
@@ -70,15 +73,18 @@ function update() {
     oper.textContent = op;
 }
 
-const buttons = document.querySelectorAll('#button');
-const display = document.querySelector('.text');
-const oper = document.querySelector('.oper');
+document.addEventListener('keydown', e => {
+    let key = e.key;
+    console.log(key);
+    buttons.forEach(button => {
+        if (key === button.textContent) button.click()
+    })
+})
 
-let value = '';
 buttons.forEach(button => {
     button.addEventListener('click', e => {
         let target = e.target.textContent;
-
+    
         switch (target) {
             case '+':
             case '-':
@@ -86,18 +92,17 @@ buttons.forEach(button => {
             case '/':
             case '%':
             case 'Pow':
-                    if (currNum === undefined) {
+                if (op === undefined) {
                     currNum = parseFloat(value);
-                    update();
                 } else {
                     nextNum = parseFloat(value);
                     currNum = operator(currNum, nextNum, op);
-                    update();
                 }
                 op = target;
                 value = '';
+                update();
                 break;
-
+    
             case '=':
                 nextNum = parseFloat(value);
                 currNum = operator(currNum, nextNum, op);
@@ -105,18 +110,17 @@ buttons.forEach(button => {
                 op = undefined;
                 value = '';
                 break;
-
-            case 'AC':
+    
+            case 'Delete':
                 clear();
                 break;
-            case 'CE':
-                remove();
+            case 'Backspace':
+                removeLastChar();
                 break;
             default:
                 value += target;
                 display.textContent = value;
         }
-
+    
     })
-
 });
