@@ -1,0 +1,85 @@
+* {
+    /* margin: 0; */
+    padding: 0;
+    text-align: center;
+    font-family: monospace, 'cursive', sans-serif;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 360px;
+    height: 480px;
+    margin: 100px auto;
+}
+
+.display {
+    display: flex;
+    justify-content: flex-end;
+    overflow: hidden;
+    flex: 1;
+    border-bottom: 1px solid rgba(100, 100, 100, 0.1);
+}
+
+.display div {
+    margin-right: 10px;
+    font-size: 18px;
+    font-weight: 700;
+    padding: 10px;
+}
+
+.buttons {
+    display: flex;
+    flex: 3;
+}
+
+.numbersAndFn {
+    display: flex;
+    flex-direction: column;
+    flex: 3;
+}
+
+.functions {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex: 1;
+}
+
+.functions .func, .operators .op, .numbers .num {
+    padding: 25px 0; 
+    flex: 1;
+    cursor: pointer;
+    margin: 5px;
+    user-select: none;
+}
+
+.numbers {
+    display: flex;
+    flex-wrap: wrap;
+    /* align-items: center; */
+    flex: 4;
+}
+
+.numbers .num {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1 70px;
+
+}
+
+.operators {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    flex: 1;
+}
+
+#button {
+    border-radius: 4px;
+}
+
+#button:hover {
+    background: rgba(100, 100, 100, 0.1);
+}
