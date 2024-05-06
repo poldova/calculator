@@ -1,5 +1,5 @@
 * {
-    /* margin: 0; */
+    margin: 0;
     padding: 0;
     text-align: center;
     font-family: monospace, 'cursive', sans-serif;
@@ -9,7 +9,7 @@
     display: flex;
     flex-direction: column;
     width: 360px;
-    height: 480px;
+    height: 400px;
     margin: 100px auto;
 }
 
@@ -30,7 +30,7 @@
 
 .buttons {
     display: flex;
-    flex: 3;
+    flex: 5;
 }
 
 .numbersAndFn {
@@ -46,12 +46,20 @@
     flex: 1;
 }
 
+.functions, .operators {
+    font-size: small;
+}
+
 .functions .func, .operators .op, .numbers .num {
-    padding: 25px 0; 
+    padding: 16px 0; 
     flex: 1;
     cursor: pointer;
     margin: 5px;
     user-select: none;
+}
+
+.operators .op {
+    flex: 0;
 }
 
 .numbers {
